@@ -19,12 +19,12 @@ public class ServletProcessor1 {
 		URLClassLoader loader = null;
 		try {
 			URL[] urls = new URL[1];
-			URLStreamHandler streamHanlder = null;
+			URLStreamHandler streamHanlder = null;// 仅仅起声明类型的作用
 			File classPath = new File(Constants.WEB_ROOT);
-			System.out.println(classPath.getCanonicalPath());
 			// servlet容器中把servlet存放的位置叫做库
 			String repository = (new URL("file", null,
 					classPath.getCanonicalPath() + File.separator)).toString();
+			System.out.println(repository);
 			urls[0] = new URL(null, repository, streamHanlder);
 			loader = new URLClassLoader(urls);
 		} catch (IOException e) {
