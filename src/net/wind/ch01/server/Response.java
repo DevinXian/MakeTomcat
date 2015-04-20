@@ -5,6 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
+import net.wind.ch02.Constants;
+
 /**
  * HTTP Response = Status-Line<br/>
  * *((general-header | response-header | entity-header) CRLF)<br/>
@@ -32,7 +34,7 @@ public class Response {
 		byte[] bytes = new byte[BUFFER_SIZE];
 		FileInputStream fis = null;
 		try {
-			File file = new File(HttpServer.WEB_ROOT, request.getUri());
+			File file = new File(Constants.WEB_ROOT, request.getUri());
 			if (file.exists()) {
 				fis = new FileInputStream(file);
 				int ch = fis.read(bytes, 0, BUFFER_SIZE);
