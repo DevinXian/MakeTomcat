@@ -26,4 +26,15 @@ Step by step, follow 《How Tomcat Works》!
 2. 容器为每一个请求（request）提供一个ServletRequest和ServletResponse实现；
 3. 将2作为参数调用servlet的service方法；
 4. 当servlet被关闭的时候，调用其destroy方法并且卸载servlet类。
-####3. 参考代码见
+####3. 关于ch02代码的问题
+
+1. HttpServer1和ServletProcessor1出现的问题：由于传入servlet.service方法的参数是经过上转型的实际为Request和Response的对象，则会导致知晓servlet细节的人将这两个参数下转型回Request和Response，这样就可以调用其公有方法（如parse)，这违背了安全原则（不能在service方法中暴露ServletRequest接口定义之外的方法）。当然，不能将所有敏感方法设置为private（别的类不能调用），一种方法是设置为默认访问控制权限；更好的方法是使用facade模式来设计。
+2. facade模式（基于本例）：如RequestFacade，继承ServletRequest接口，并持有一个私有Request对象，通过构造函数方式置入。所有接口方法中通过调用该Request对象来完成，然后servlet的service方法传入参数RequestFacade和ResponseFacade,这样调用者只能使用接口中定义的方法，达到了隔离的目的！
+3. 代码见ch01中HttpServer2及ServletProccessor2
+
+##<center style="font-family:Microsoft Yahei">第三章	Connetor——连接器
+
+####1. 第一点
+####2. 第二点
+####3. 第三点
+####4. 第四点
