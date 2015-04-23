@@ -1,6 +1,6 @@
 #<center>《How To Make Tomcat》笔记摘要
 ---------------
-Step by step, follow 《How Tomcat Works》!
+Step by step, follow 《How Tomcat Works》! 暂时基于Tomcat4，后续升级。
 ##<center style="font-family:Microsoft Yahei">第二章	简单的Servlet容器
 
 ####1. javax.servelt.Servlet接口
@@ -34,7 +34,7 @@ Step by step, follow 《How Tomcat Works》!
 
 ##<center style="font-family:Microsoft Yahei">第三章	Connetor——连接器
 
-####1. 第一点
+####1. StringManager为每个包提供一个单例，不同包名对应实例包含在static hashTable（多线程）中。StringManager可读取包中Properties文件，并用于修改——该文件可存储包类需要用到的error messages配置。
 ####2. 第二点
 ####3. 第三点
 ####4. 第四点
